@@ -1,4 +1,5 @@
-let apikey = ''
+let apikey = '';
+
 $(document).ready(() => {
     $('#searchForm').on('submit', (e) => {
         let searchTxt = $('#searchTxt').val();
@@ -11,7 +12,7 @@ $(document).ready(() => {
 
 
 function getMovies(searchTxt) {
-    axios.get('http://www.omdbapi.com/?apikey=d35c3b7b&s=' + searchTxt)
+    axios.get('http://www.omdbapi.com/?apikey=' + apikey + '&s=' + searchTxt)
         .then((response) => {
             let movies = response.data.Search;
             let output = '';
@@ -44,7 +45,7 @@ function movieSelected(id) {
 function getMovie() {
     let movieId = sessionStorage.getItem('movieId');
 
-    axios.get('http://www.omdbapi.com/?apikey=d35c3b7b&i=' + movieId)
+    axios.get('http://www.omdbapi.com/?apikey=' + apikey + '&i=' + movieId)
         .then((response) => {
             console.log(movieId);
             let movie = response.data;
